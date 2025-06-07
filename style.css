@@ -35,3 +35,31 @@ h1 {
 .add-action {
   margin-top: 10px;
 }
+.action-edit {
+  background: #fffbe6;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.action-edit label {
+  display: block;
+  margin-bottom: 5px;
+}
+.action-edit input,
+.action-edit select {
+  margin-right: 5px;
+}
+.readonly-block {
+  margin-top: 10px;
+  background: #f8f8f8;
+  border-left: 4px solid #aaa;
+  padding: 8px;
+}
+.readonly-block pre {
+  white-space: pre-wrap;
+  font-family: monospace;
+  background: #fff;
+  padding: 5px;
+  border: 1px solid #ccc;
+  overflow-x: auto;
+}

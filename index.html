@@ -14,6 +14,28 @@
 
 <div id="workflows"></div>
 
+<template id="action-template">
+  <div class="action-edit">
+    <label>Akce:
+      <select class="action-type">
+        <option value="pickup">pickup</option>
+        <option value="drop">drop</option>
+        <option value="wait">wait</option>
+        <option value="set_variable">set_variable</option>
+      </select>
+    </label>
+    <label>Cíl:
+      <select class="target-type">
+        <option value="stationarea">stationarea</option>
+        <option value="station">station</option>
+      </select>
+    </label>
+    <input type="text" class="target-value" placeholder="např. areaA nebo stationX">
+    <button class="confirm-add">✔</button>
+    <button class="cancel-add">✖</button>
+  </div>
+</template>
+
 <script src="script.js"></script>
 </body>
 </html>
