@@ -1,0 +1,159 @@
+{
+    "101": {
+        "name": "areaB => areaA",
+        "status": 0,
+        "order": {
+            "action": {
+                "0": {
+                    "action": "pickup",
+                    "target": {
+                        "stationarea": "areaB"
+                    }
+                },
+                "1": {
+                    "action": "drop",
+                    "target": {
+                        "stationarea": "areaA"
+                    }
+                }
+            }
+        }
+    },
+    "102": {
+        "name": "areaA => area?",
+        "status": 0,
+        "order": {
+            "action": {
+                "0": {
+                    "action": "pickup",
+                    "target": {
+                        "stationarea": "areaA"
+                    }
+                },
+                "1": {
+                    "action": "drop",
+                    "target": {
+                        "stationarea": "@DESTINATION;Destination;stationarea"
+                    }
+                }
+            }
+        }
+    },
+    "103": {
+        "name": "areaB => areaA (prázdné - zruš obj)",
+        "status": 0,
+        "order": {
+            "action": {
+                "0": {
+                    "action": "pickup",
+                    "target": {
+                        "stationarea": "areaB"
+                    },
+                    "event": {
+                        "no_station_left": "order_cancel"
+                    }
+                },
+                "1": {
+                    "action": "drop",
+                    "target": {
+                        "stationarea": "areaA"
+                    }
+                }
+            }
+        }
+    },
+    "104": {
+        "name": "(pokud toggle 'start'): areaA => areaB (pokud areaB plná, zpět do areaA)",
+        "status": 0,
+        "start": {
+            "toggle_on": "start"
+        },
+        "order": {
+            "workflow_max_pending": 1,
+            "action": {
+                "0": {
+                    "action": "pickup",
+                    "target": {
+                        "stationarea": "areaA"
+                    }
+                },
+                "1": {
+                    "action": "drop",
+                    "target": {
+                        "stationarea": "areaB"
+                    },
+                    "event": {
+                        "no_station_left": "action_goto2"
+                    }
+                },
+                "2": {
+                    "action": "drop",
+                    "target": {
+                        "stationarea": "areaA"
+                    },
+                    "event": {
+                        "carrier_empty": "action_done"
+                    }
+                }
+            }
+        }
+    },
+    "protectivestop": {
+        "name": "5S PROTECTIVE STOP",
+        "status": 0,
+        "order": {
+            "action": {
+                "0": {
+                    "action": "wait",
+                    "time": 5
+                }
+            }
+        }
+    },
+    "purge": {
+        "name": "PURGE",
+        "status": 0,
+        "order": {
+            "action": {
+                "0": {
+                    "event": {
+                        "order_canceled": "action_goto1"
+                    }
+                },
+                "1": {
+                    "action": "drop",
+                    "target": {
+                        "stationarea": "emergency"
+                    }
+                }
+            }
+        }
+    },
+    "107": {
+        "name": "Volání jiného workflow při zrušení",
+        "status": 0,
+        "order": {
+            "event": {
+                "order_canceled": {
+                    "workflow": {
+                        "id": 0
+                    }
+                }
+            },
+            "action": {
+                "0": {
+                    "action": "pickup",
+                    "target": {
+                        "stationarea": "areaB"
+                    }
+                },
+                "1": {
+                    "action": "drop",
+                    "target": {
+                        "stationarea": "areaA"
+                    }
+                }
+            }
+        }
+    }
+}
